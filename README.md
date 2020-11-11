@@ -29,7 +29,7 @@
 | area            | string     | null: false                    |
 | delivery_day    | string     | null: false                    | 
 | price           | string     | null: false                    |
-| condition       | string     | null: false                    |
+
 
 ### Association
 
