@@ -42,9 +42,6 @@
 | ------------------- | ---------- | ------------------------------ |
 | user                | references | null: false, foreign_key: true |
 | item                | references | null: false, foreign_key: true |
-| card_number         | string     | null: false                    |
-| expdate             | datetime   | null: false                    |
-| security_code       | string     | null: false                    |
 
 ### Association
  - belongs_to :user
