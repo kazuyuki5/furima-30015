@@ -14,7 +14,7 @@
 ### Association
 
 - has_many :items
-- has_one  :customer
+- has_one  :order
 
 ## items テーブル
 
@@ -34,9 +34,9 @@
 ### Association
 
 - belongs_to :user
-- has_one    :customer
+- has_one    :order
 
-## customers テーブル
+## orders テーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
@@ -46,14 +46,24 @@
 | expdate             | datetime   | null: false                    |
 | security_code       | string     | null: false                    |
 
+### Association
+ - belongs_to :user
+ - belongs_to :item
+ - has_one    :addresses
+
 ## addresses テーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| customer     | references | null: false, foreign_key: true |
+| order        | references | null: false, foreign_key: true |
 | postal_code  | string     | null: false                    |
 | prefecture   | string     | null: false                    |
 | city         | string     | null: false                    |
 | address      | string     | null: false                    |
 | building     | string     |                                |
 | phone_number | string     | null: false                    |
+
+
+### Association
+
+- belongs_to order
