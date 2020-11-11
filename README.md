@@ -23,12 +23,12 @@
 | user            | references | null: false, foreign_key: true |
 | name            | string     | null: false                    |
 | explanation     | text       | null: false                    |
-| category        | string     | null: false                    |
-| condition       | string     | null: false                    |
-| delivery_fee    | string     | null: false                    |
-| area            | string     | null: false                    |
-| delivery_day    | string     | null: false                    | 
-| price           | string     | null: false                    |
+| category_id     | integer    | null: false                    |
+| condition_id    | integer    | null: false                    |
+| delivery_fee_id | integer    | null: false                    |
+| area_id         | integer    | null: false                    |
+| delivery_day_id | integer    | null: false                    | 
+| price           | integer    | null: false                    |
 
 
 ### Association
