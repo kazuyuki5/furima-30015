@@ -34,6 +34,11 @@ describe User do
         another_user.valid?
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
+      it "emailに＠がないと登録できない" do
+        @user.email = "yamada"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
       it "passwordが空では登録できない" do
         @user.password = ""
         @user.valid?
@@ -108,6 +113,7 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Kana first name is invalid. Input full-width katakana characters.")
       end
+      
     end
   end
 end
