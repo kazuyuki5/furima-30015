@@ -84,7 +84,19 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-
+      it 'kana_family_nameとkana_first_nameはどちらかが空では登録できない' do
+        @user.kana_family_name = ""
+        @user.kana_first_name = "タロウ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Kana family name can't be blank")
+      end
+      it 'kana_family_nameとkana_first_nameはどちらかが空では登録できない' do
+        @user.kana_family_name = "ヤマダ"
+        @user.kana_first_name = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Kana first name can't be blank")
+       end
+      
     end
   end
 end
