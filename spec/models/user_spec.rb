@@ -39,8 +39,8 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
-      it "passwordが5文字以下であれば登録できない" do
-        @user.password = "00000"
+      it "passwordが英数混合だが、字数が5文字以下であれば登録できない" do
+        @user.password = "0000a"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
