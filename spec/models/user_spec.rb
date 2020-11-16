@@ -102,16 +102,24 @@ describe User do
         expect(@user.errors.full_messages).to include("Kana first name can't be blank")
        end
        it 'kana_family_nameは半角英数、全角漢字では登録できない' do
-        @user.kana_family_name = "yamada1"
-        @user.kana_family_name = "山田"
+        @user.kana_family_name = "yamada1山田"
         @user.valid?
         expect(@user.errors.full_messages).to include("Kana family name is invalid. Input full-width katakana characters.")
       end
       it 'kana_first_nameは半角英数、全角漢字では登録できない' do
-        @user.kana_first_name = "taro1"
-        @user.kana_first_name = "太郎"
+        @user.kana_first_name = "taro1太郎"
         @user.valid?
         expect(@user.errors.full_messages).to include("Kana first name is invalid. Input full-width katakana characters.")
+      end
+      it 'kanji_family_nameは全角（漢字・ひらがな・カタカナ）以外では登録できない' do
+        @user.kanji_first_name = "taro1"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Kanji first name is invalid. Input full-width characters.")
+      end
+      it 'kanji_first_nameは全角（漢字・ひらがな・カタカナ）以外では登録できない' do
+        @user.kanji_first_name = "taro1太郎"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Kanji first name is invalid. Input full-width characters.")
       end
       
     end
