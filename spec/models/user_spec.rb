@@ -79,6 +79,12 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
+      it 'password:半角英数混合(半角数字のみ)' do
+        @user.password = '0000000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+
     end
   end
 end
