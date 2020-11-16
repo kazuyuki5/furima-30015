@@ -14,10 +14,6 @@ describe User do
         @user.password_confirmation = "000000"
         expect(@user).to be_valid
       end
-      it "passwordとpassword_confirmationが一致していれば登録できる" do
-        @user.password = @user.password_confirmation
-        expect(@user).to be_valid
-      end
     end
 
     context '新規登録がうまくいかないとき' do
