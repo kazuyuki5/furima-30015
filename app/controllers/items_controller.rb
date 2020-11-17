@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all
+    @items = Item.order("created_at DESC")
   end
 
   def new
@@ -9,7 +9,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(item_params)
+    @item = Item.new(item_params)
+    if @article.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
