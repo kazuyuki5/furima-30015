@@ -27,22 +27,22 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Explanation can't be blank")
       end
-      it 'category_idが空だと保存できないこと' do
+      it 'category_idが1だと登録できないこと' do
         @item.category_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank", "Category is not a number")
       end
-      it 'delivery_fee_idが空だと保存できないこと' do
+      it 'delivery_fee_idが1だと登録できないこと' do
         @item.delivery_fee_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery fee can't be blank", "Delivery fee is not a number")
       end
-      it 'area_idが空だと保存できないこと' do
+      it 'area_idが1だと登録できないこと' do
         @item.area_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Area can't be blank", "Area is not a number")
       end
-      it 'delivery_day_idが空だと保存できないこと' do
+      it 'delivery_day_idが1だと登録できないこと' do
         @item.delivery_day_id = ""
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery day can't be blank", "Delivery day is not a number")
