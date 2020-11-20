@@ -28,24 +28,29 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Explanation can't be blank")
       end
       it 'category_idが1だと登録できないこと' do
-        @item.category_id = ""
+        @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank", "Category is not a number")
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
+      end
+      it 'condition_idが1だと登録できないこと' do
+        @item.condition_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Condition must be other than 1")
       end
       it 'delivery_fee_idが1だと登録できないこと' do
-        @item.delivery_fee_id = ""
+        @item.delivery_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery fee can't be blank", "Delivery fee is not a number")
+        expect(@item.errors.full_messages).to include("Delivery fee must be other than 1")
       end
       it 'area_idが1だと登録できないこと' do
-        @item.area_id = ""
+        @item.area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area can't be blank", "Area is not a number")
+        expect(@item.errors.full_messages).to include("Area must be other than 1")
       end
       it 'delivery_day_idが1だと登録できないこと' do
-        @item.delivery_day_id = ""
+        @item.delivery_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery day can't be blank", "Delivery day is not a number")
+        expect(@item.errors.full_messages).to include("Delivery day must be other than 1")
       end
       it 'priceが空だと保存できないこと' do
         @item.price = ""
