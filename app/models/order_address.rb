@@ -1,6 +1,6 @@
-class UserDonation
+class OrderAddress
   include ActiveModel::Model
-  attr_accessor :nickname, :kanji_family_name, :kanji_first_name, :kana_family_name, :kana_first_name, :birthday, :image, :name, :explanation, :price, :category_id, :condition_id, :delivery_fee_id, :area_id, :delivery_day_id, :postal_code, :city, :address, :building, :phone_number
+  attr_accessor :postal_code, :area_id, :city, :address, :building, :phone_number
 
 
   with_options presence: true do
@@ -12,9 +12,7 @@ class UserDonation
     validates :area_id, numericality: { other_than: 1, message: "can't be blank" }
 
     def save
-      user = User.create(nickname: nickname, kanji_family_name: kanji_family_name, kanji_fi rst_name: kanji_first_name, kana_family_name: kana_family_name, kana_first_name: kana_first_name, birthday: birthday)
-      item = Item.create(image: image, name: name, explanation: explanation, price: price, category_id: category.id, delivery_fee_id: delivery_fee.id, area_id: area.id, delivery_day_id: delivery_day.id)
       order = Order.create(item_id: item.id, user_id: user.id)
-      Address.create(postal_code: postal_code, area_id: area.id, city: city, address: address, building: building, order_id: order.id) 
+      Address.create(postal_code: postal_code, area_id: area.id, city: city, address: address, building: building, phone_number: phone_number, order_id: order.id) 
     end
 end
