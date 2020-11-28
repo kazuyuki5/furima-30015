@@ -39,7 +39,7 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
     end
-    it 'buildingは空でも保存できること' do
+    it '建物名は空でも保存できること' do
       @order_address.building = nil
       expect(@order_address).to be_valid
     end
