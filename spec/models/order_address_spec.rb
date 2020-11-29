@@ -9,6 +9,11 @@ RSpec.describe OrderAddress, type: :model do
     it 'すべての値とtokenが正しく入力されていれば保存できること' do
       expect(@order_address).to be_valid
     end
+    it '建物名は空でも保存できること' do
+      @order_address.building = nil
+      expect(@order_address).to be_valid
+    end
+    
     it 'postal_codeが空だと保存できないこと' do
       @order_address.postal_code = nil
       @order_address.valid?
@@ -38,10 +43,6 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.phone_number = nil
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
-    end
-    it '建物名は空でも保存できること' do
-      @order_address.building = nil
-      expect(@order_address).to be_valid
     end
     it 'phone_numberは11桁以内でないと保存できないこと' do
       @order_address.phone_number = '123456789123'
